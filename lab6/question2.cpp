@@ -40,8 +40,8 @@ void displaycount(){
 int main(){
     Objcreater obj1, obj2,obj3,obj4;
     displaycount();
-    cout<<endl;
     Objcreater obj5;
+    cout<<endl<<"Creating another object "<<endl<<endl;
     displaycount();
     return 0;
 
