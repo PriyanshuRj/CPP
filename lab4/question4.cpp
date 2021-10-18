@@ -1,4 +1,5 @@
-#include<bits/stdc++.h>
+#include<iostream>
+
 using namespace std;
 float area(float radius){
     return 3.14*radius*radius;
