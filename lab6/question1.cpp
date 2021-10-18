@@ -1,6 +1,7 @@
 #include<iostream>
 using namespace std;
 class DB;
+
 class DM{
     private:
         float meters;
@@ -11,11 +12,7 @@ class DM{
         DM(float dis);
         void display();
         friend void add(DM &obj1, DB &obj2);
-
-
 };
-
-
 class DB{
     private:
         float feet;
@@ -25,7 +22,6 @@ class DB{
         DB(float dis);
         void display();
         friend void add(DM &obj1, DB &obj2);
-
 };
 
 // Default Constructor function for DM class
@@ -112,12 +108,12 @@ void add(DM &obj1, DB &obj2){
         }
         cout<<endl;
         obj.display();
-
     }
     else{
         cout<<"wrong choice";
     }
 }
+
 
 int main(){
     float discenti;
@@ -135,5 +131,4 @@ int main(){
     cout<<endl;
     add(objmeter,objfoot);
     return 0;
-
 }
