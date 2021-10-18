@@ -14,7 +14,6 @@ class Staff{
          cout<<"The code of the  member is : "<<code<<endl;
      }
 };
-
 class Teacher : public Staff{
     private:
         string subject;
@@ -45,7 +44,6 @@ class Typist : public Staff{
         void display(){
             Staff::display();
             cout<<"The subject Typist has a typing speed of   : "<<speed<<endl;
-           
         }
         
 };
@@ -59,7 +57,6 @@ class Officer : public Staff{
         void display(){
             Staff::display();
             cout<<"The subject officer has a grade of  : "<<grade<<endl;
-           
         }
 };
 class Regular : public Typist{
@@ -67,8 +64,6 @@ class Regular : public Typist{
         Regular(float speed,int code, string name) : Typist(speed,code,name){}
         void display(){
             Typist::display();
-            
-           
         }
 };
 class Casual : public Typist{
@@ -85,7 +80,6 @@ class Casual : public Typist{
 };
 
 
-
 int main(){
     cout<<"For a regular staff member"<<endl;
     cout<<"Enter the code : ";
@@ -98,7 +92,6 @@ int main(){
     s1.display();
     cout<<endl;
     cout<<"For a Teacher member"<<endl;
-
     cout<<"Enter the code : ";
     cin>>code;
     cout<<"Enter the name : ";
@@ -114,7 +107,6 @@ int main(){
         cout<<"Enter the publication name : ";
         cin>>publication[i];
     }
-
     Teacher t1(sub,publication,code,name,num);
     cout<<endl;
     t1.display();
