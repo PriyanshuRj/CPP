@@ -7,7 +7,6 @@ int main(){
     fin.open("Source1.txt");
     if(!fin){
         cout<<"Error file dosen't exists"<<endl;
-        
     }
     vector <int> S1;
     int val;
@@ -18,7 +17,6 @@ int main(){
     fin.open("Source2.txt");
     if(!fin){
         cout<<"Error file dosen't exists"<<endl;
-        
     }
     vector <int> S2;
     while(fin>>val){
