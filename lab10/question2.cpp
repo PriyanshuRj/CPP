@@ -89,7 +89,6 @@ void Queue<T>::dequeue(){
         T val = queue[start];
         cout<<"Element dequed : "<<val<<endl;
         queue[start++] = 0;
-
     }
 }
 
@@ -130,7 +129,6 @@ int main(){
         else{
             ans = false;
         }
-
     }
     cout<<endl<<"For float"<<endl;
     Stack<float> stack2(size);
@@ -147,8 +145,6 @@ int main(){
         }
         else if(ans == 2){
             stack2.pop();
-    
-
         }
         else if(ans ==3){
             stack2.display();
