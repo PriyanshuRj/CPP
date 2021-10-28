@@ -1,5 +1,6 @@
 #include<iostream>
 using namespace std;
+
 class Division{
     private:
         double num;
@@ -8,6 +9,7 @@ class Division{
         void getval();
         void calc();
 };
+
 void Division::getval(){
     cout<<"Enter the Value of Numirator :";
     cin>>this->num;
@@ -21,6 +23,7 @@ void Division::getval(){
     }
 
 }
+
 void Division::calc(){
     if(den==0){
         throw 0;
@@ -29,16 +32,15 @@ void Division::calc(){
         cout<<"The result after division is : "<<num/den;
     }
 }
+
 int main() {
     try{
         Division d;
         d.getval();
         d.calc();
-        
     }catch(int err){
         if(err == 0){
             cout<<"Error !! Division by zero Aborting !! "<<endl;
-
         }
         if(err == 1){ 
             cout<<"Error !! Wrong input data type Aborting !!"<<endl;
