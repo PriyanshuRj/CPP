@@ -10,14 +10,20 @@ class Division{
 };
 void Division::getval(){
     cout<<"Enter the Value of Numirator :";
-    cin>>num;
+    cin>>this->num;
+    if(cin.fail()){
+        throw 1;
+    }
     cout<<"Enter the Value of Denominator :";
-    cin>>den;
+    cin>>this->den;
+    if(cin.fail()){
+        throw 1;
+    }
 
 }
 void Division::calc(){
     if(den==0){
-        throw "Division by zero not possible";
+        throw 0;
     }
     else{
         cout<<"The result after division is : "<<num/den;
@@ -29,8 +35,14 @@ int main() {
         d.getval();
         d.calc();
         
-    }catch(string err){
-        cout<<err<<endl;
+    }catch(int err){
+        if(err == 0){
+            cout<<"Error !! Division by zero Aborting !! "<<endl;
+
+        }
+        if(err == 1){ 
+            cout<<"Error !! Wrong input data type Aborting !!"<<endl;
+        }
 
     }
     return 0;
