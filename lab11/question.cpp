@@ -11,7 +11,7 @@ class Division{
 };
 
 void Division::getval(){
-    cout<<"Enter the Value of Numirator :";
+    cout<<"Enter the Value of Numerator :";
     cin>>this->num;
     if(cin.fail()){
         throw 1;
