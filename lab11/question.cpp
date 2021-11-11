@@ -21,7 +21,6 @@ void Division::getval(){
     if(cin.fail()){
         throw 1;
     }
-
 }
 
 void Division::calc(){
