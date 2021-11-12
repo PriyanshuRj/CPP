@@ -99,6 +99,7 @@ int main()
             {
                 cout<<"Select of of the following"<<endl;
                 cout << "\n\n1 for creating a vector\n2 for modifing the vector\n3 for multiplying with scaler\n4 for display\nelse to exit\n\n";
+                cout<<"Enter your choice : ";
                 cin >> ch;
                 switch (ch)
                 {
