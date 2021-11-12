@@ -81,13 +81,13 @@ void Vector<T>::display()
 
 int main()
 {
-    cout << "Do you want to create a try the program : " << endl;
+    cout << "Do you want to create a try the program (1/0) : ";
     int ans = 0;
     cin >> ans;
     if (ans == 1)
     {
         int choice;
-        cout << "Select the data type : " << endl;
+        cout << "\nSelect the data type : " << endl;
         cout << "1 for intiger\n2 for float\n3 for long\n4 for long long\n5 for double\n";
         cout << "Your choice : ";
         cin >> choice;
@@ -97,7 +97,8 @@ int main()
             int ch;
             do
             {
-                cout << "\n1 for creating a vector\n2 for modifing the vector\n3 for multiplying with scaler\n4 for display\nelse to exit\n";
+                cout<<"Select of of the following"<<endl;
+                cout << "\n\n1 for creating a vector\n2 for modifing the vector\n3 for multiplying with scaler\n4 for display\nelse to exit\n\n";
                 cin >> ch;
                 switch (ch)
                 {
@@ -126,7 +127,8 @@ int main()
             int ch;
             do
             {
-                cout << "\n1 for creating a vector\n2 for modifing the vector\n3 for multiplying with scaler\n4 for display\nelse to exit\n";
+                cout<<"\nSelect one option :\n";
+                cout << "1 for creating a vector\n2 for modifing the vector\n3 for multiplying with scaler\n4 for display\nelse to exit\n";
                 cin >> ch;
                 switch (ch)
                 {
