@@ -234,6 +234,8 @@ int main()
                     break;
                 default:
                     ch = 10;
+                    cout << "Thank you for visiting " << endl;
+
                     break;
                 }
 
