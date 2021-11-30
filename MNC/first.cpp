@@ -10,18 +10,18 @@ class Complex {
         real = Real;
         imaginary = Imaginary;
     }
-    Complex add(Complex C1, Complex C2)
+    Complex add(Complex casual_typist, Complex C2)
     {
         Complex sum;
-        sum.real = C1.real + C2.real;
-        sum.imaginary = C1.imaginary + C2.imaginary;
+        sum.real = casual_typist.real + C2.real;
+        sum.imaginary = casual_typist.imaginary + C2.imaginary;
         return sum;
     }
-    Complex subtractComp(Complex C1, Complex C2)
+    Complex subtractComp(Complex casual_typist, Complex C2)
     {
         Complex difference;
-        difference.real = C1.real - C2.real;
-        difference.imaginary = C1.imaginary - C2.imaginary;
+        difference.real = casual_typist.real - C2.real;
+        difference.imaginary = casual_typist.imaginary - C2.imaginary;
         return difference;
     }
     void display(){
@@ -32,20 +32,20 @@ class Complex {
 int main()
 {
 
-    Complex C1(3, 2);
+    Complex casual_typist(3, 2);
 
-    C1.display();
+    casual_typist.display();
     Complex C2(9, 5);
 
     C2.display();
 
     Complex C3;
     cout<<"Adding both : ";
-    C3.add(C1,C2);
+    C3.add(casual_typist,C2);
     C3.display();
     Complex C4;
     cout<<"Subtracting both : ";
-    C4.add(C1,C2);
+    C4.add(casual_typist,C2);
     C4.display();
 
 }
