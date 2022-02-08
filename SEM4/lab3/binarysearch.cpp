@@ -21,7 +21,7 @@ void insert_or_delete(int *arr,int index,int length,int value){
 
     }
 }
-void display(int arr,int length){
+void display(int arr[],int length){
     for(int i = 0;i<length;i++){
         cout<<"Element at index "<<i<<" is :"<<arr[i]<<endl;
     }
