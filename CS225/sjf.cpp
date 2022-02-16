@@ -25,7 +25,7 @@ void findWaitingTime(Process proc[], int n, int wt[])
     {
         for (int j = 0; j < n; j++)
         {
-            if ((proc[j].art <= t) && (rt[j] < minm) && rt[j] > 0)
+            if ((proc[j].art <= t) && (rt[j] < minm) )
             {
                 minm = rt[j];
                 shortest = j;

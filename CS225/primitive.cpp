@@ -1,48 +1,80 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-vector<int> process, burst_time, waiting_time, turn_around_time;
+struct fcfsprocess {
+    int pid;
+    int arrival_time;
+    int burst_time;
+    int start_time;
+    int completion_time;
+    int turnaround_time;
+    int waiting_time;
+    int response_time;
+};
 
-void waitingTime(int length){
-    waiting_time.push_back(0);
-    for(int i = 1; i <length; i++){
-        waiting_time.push_back(waiting_time[i-1] + burst_time[i-1]);
-    }
+bool compareArrivalTime(fcfsprocess p1, fcfsprocess p2) 
+{ 
+    return p1.arrival_time < p2.arrival_time;
 }
 
-void turnAroundTime(int length){
-    turn_around_time.push_back(burst_time[0]);
-    for(int i = 1; i < length; i++){
-        turn_around_time.push_back(turn_around_time[i-1] + burst_time[i]);
-    }
+bool compareprocess(fcfsprocess p1, fcfsprocess p2) 
+{  
+    return p1.pid < p2.pid;
 }
 
+int main() {
 
-int main(){
     int n;
-    cout<<"Enter the length of the process array :"<<endl;
-    cin >> n;
-    
-    cout<<"Enter the inputs for processes : "<<endl;
-    for(int i = 0; i < n; i++){
-        int num;
-        cin >> num;
-        process.push_back(num);
-    }
-    cout<<"Enter the inputs for burst time : "<<endl;
+    float avg_turnaround_time;
+    float avg_waiting_time;
+    float avg_response_time;
+    int total_turnaround_time = 0;
+    int total_waiting_time = 0;
+    int total_response_time = 0;
+    float throughput;
 
-    for(int i = 0; i < n; i++){
-         int num;
-        cin >> num;
-        burst_time.push_back(num);
-    }
+    cout<<"Enter the number of processes: ";
+    cin>>n;
+    struct fcfsprocess *p = new struct fcfsprocess[n];
 
-    waitingTime(n);
-    turnAroundTime(n);
-    
-    cout << "Process" << "\t\t" << "Burst Time" << "\t" << "Waiting Time" << "\t" << "Turn Around Time" << '\n';
-    for(int i=0; i<n; i++){
-        cout << process[i] << "\t\t" << burst_time[i] << "\t\t" <<  waiting_time[i] << "\t\t" << turn_around_time[i] << '\n';
+    for(int i = 0; i < n; i++) {
+        cout<<"Enter arrival time of process "<<i+1<<": ";
+        cin>>p[i].arrival_time;
+        cout<<"Enter burst time of process "<<i+1<<": ";
+        cin>>p[i].burst_time;
+        p[i].pid = i+1;
+        cout<<endl;
     }
 
+    sort(p,p+n,compareArrivalTime);
+
+    for(int i = 0; i < n; i++) {
+        p[i].start_time = (i == 0)?p[i].arrival_time:max(p[i-1].completion_time,p[i].arrival_time);
+        p[i].completion_time = p[i].start_time + p[i].burst_time;
+        p[i].turnaround_time = p[i].completion_time - p[i].arrival_time;
+        p[i].waiting_time = p[i].turnaround_time - p[i].burst_time;
+        p[i].response_time = p[i].start_time - p[i].arrival_time;
+        total_turnaround_time += p[i].turnaround_time;
+        total_waiting_time += p[i].waiting_time;
+        total_response_time += p[i].response_time;
+    }
+
+    avg_turnaround_time = (float) total_turnaround_time / n;
+    avg_waiting_time = (float) total_waiting_time / n;
+    avg_response_time = (float) total_response_time / n;
+
+    throughput = float(n) / (p[n-1].completion_time - p[0].arrival_time);
+
+    sort(p,p+n,compareprocess);
+
+    cout<<endl;
+    cout<<"Process    "<<"Arival Time\t"<<"Burst Time    "<<"Turnaround Time\t"<<"Waitning Time\t"<<"Response Time\t"<<"\n"<<endl;
+
+    for(int i = 0; i < n; i++) {
+        cout<<p[i].pid<<"\t   "<<p[i].arrival_time<<"\t\t"<<p[i].burst_time<<"\t\t"<<p[i].turnaround_time<<"\t\t"<<p[i].waiting_time<<"\t\t"<<p[i].response_time<<"\t"<<"\n"<<endl;
+    }
+    cout<<"Average Turnaround Time : "<<avg_turnaround_time<<endl;
+    cout<<"Average Waiting Time : "<<avg_waiting_time<<endl;
+    cout<<"Average Response Time : "<<avg_response_time<<endl;
+    cout<<"Throughput : "<<throughput<<endl;
 }
