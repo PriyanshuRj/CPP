@@ -1,13 +1,11 @@
-#include <iostream>
-#include <algorithm> 
-#include <iomanip>
-#include <string.h> 
+#include<bits/stdc++.h>
 using namespace std;
 
 struct process {
-    int process_id;
+    int process_ID;
     int arrival_time;
     int burst_time;
+    int priority;
     int start_time;
     int completion_time;
     int turnaround_time;
@@ -18,7 +16,6 @@ struct process {
 int main() {
 
     int n;
-
     float avg_turnaround_time;
     float avg_waiting_time;
     float avg_response_time;
@@ -31,16 +28,17 @@ int main() {
 
     cout<<"Enter the number of processes: ";
     cin>>n;
-    struct process *p = new process[n];
     int *pcompleted = new int[n];
-
+    struct process *p = new process[n];
 
     for(int i = 0; i < n; i++) {
         cout<<"Enter arrival time of process "<<i+1<<": ";
         cin>>p[i].arrival_time;
         cout<<"Enter burst time of process "<<i+1<<": ";
         cin>>p[i].burst_time;
-        p[i].process_id = i+1;
+        cout<<"Enter priority of the process "<<i+1<<": ";
+        cin>>p[i].priority;
+        p[i].process_ID = i+1;
         cout<<endl;
     }
 
@@ -50,16 +48,16 @@ int main() {
 
     while(completed != n) {
         int idx = -1;
-        int mn = 10000000;
+        int mx = -1;
         for(int i = 0; i < n; i++) {
             if(p[i].arrival_time <= current_time && pcompleted[i] == 0) {
-                if(p[i].burst_time < mn) {
-                    mn = p[i].burst_time;
+                if(p[i].priority > mx) {
+                    mx = p[i].priority;
                     idx = i;
                 }
-                if(p[i].burst_time == mn) {
+                if(p[i].priority == mx) {
                     if(p[i].arrival_time < p[idx].arrival_time) {
-                        mn = p[i].burst_time;
+                        mx = p[i].priority;
                         idx = i;
                     }
                 }
@@ -88,7 +86,7 @@ int main() {
         
     }
 
-    int min_arrival_time = 10000000;
+    int min_arrival_time = INT_MAX;
     int max_completion_time = -1;
     for(int i = 0; i < n; i++) {
         min_arrival_time = min(min_arrival_time,p[i].arrival_time);
@@ -102,15 +100,15 @@ int main() {
 
     cout<<endl<<endl;
 
-    cout<<"Process    "<<"Arival Time\t"<<"Burst Time    "<<"Turnaround Time\t"<<"Waitning Time\t"<<"Response Time\t"<<"\n"<<endl;
+    cout<<"Process_ID\t"<<"Arival TimeT\t"<<"Burst Time  "<<"PRIORITY  "<<"Start Time  "<<"Complition Time  "<<"TurnAround Time  "<<"Waiting Time  "<<"Response Time"<<"\n"<<endl;
 
     for(int i = 0; i < n; i++) {
-        cout<<p[i].process_id<<"\t   "<<p[i].arrival_time<<"\t\t"<<p[i].burst_time<<"\t\t"<<p[i].turnaround_time<<"\t\t"<<p[i].waiting_time<<"\t\t"<<p[i].response_time<<"\t"<<"\n"<<endl;
+        cout<<p[i].process_ID<<"\t\t"<<p[i].arrival_time<<"\t\t"<<p[i].burst_time<<"\t\t"<<p[i].priority<<"\t"<<p[i].start_time<<"\t\t " <<p[i].completion_time<<"\t\t" <<p[i].turnaround_time<<"\t\t"<<p[i].waiting_time<<"\t\t"<<p[i].response_time<<"\n"<<endl;
     }
     cout<<"Average Turnaround Time = "<<avg_turnaround_time<<endl;
-    cout<<"Average Waiting Time = "<<avg_waiting_time<<endl;
-    cout<<"Average Response Time = "<<avg_response_time<<endl;
-    cout<<"Throughput = "<<throughput<<endl;
+    cout<<"Average Waiting Time =    "<<avg_waiting_time<<endl;
+    cout<<"Average Response Time =   "<<avg_response_time<<endl;
+    cout<<"Throughput =              "<<throughput<<" process/unit time"<<endl;
 
 
 }

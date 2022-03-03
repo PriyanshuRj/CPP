@@ -2,7 +2,7 @@
 using namespace std;
 
 struct fcfsprocess {
-    int pid;
+    int process_ID;
     int arrival_time;
     int burst_time;
     int start_time;
@@ -19,7 +19,7 @@ bool compareArrivalTime(fcfsprocess p1, fcfsprocess p2)
 
 bool compareprocess(fcfsprocess p1, fcfsprocess p2) 
 {  
-    return p1.pid < p2.pid;
+    return p1.process_ID < p2.process_ID;
 }
 
 int main() {
@@ -42,7 +42,7 @@ int main() {
         cin>>p[i].arrival_time;
         cout<<"Enter burst time of process "<<i+1<<": ";
         cin>>p[i].burst_time;
-        p[i].pid = i+1;
+        p[i].process_ID = i+1;
         cout<<endl;
     }
 
@@ -58,23 +58,21 @@ int main() {
         total_waiting_time += p[i].waiting_time;
         total_response_time += p[i].response_time;
     }
-
     avg_turnaround_time = (float) total_turnaround_time / n;
     avg_waiting_time = (float) total_waiting_time / n;
     avg_response_time = (float) total_response_time / n;
-
     throughput = float(n) / (p[n-1].completion_time - p[0].arrival_time);
 
     sort(p,p+n,compareprocess);
 
-    cout<<endl;
+    cout<<endl<<endl;
     cout<<"Process    "<<"Arival Time\t"<<"Burst Time    "<<"Turnaround Time\t"<<"Waitning Time\t"<<"Response Time\t"<<"\n"<<endl;
 
     for(int i = 0; i < n; i++) {
-        cout<<p[i].pid<<"\t   "<<p[i].arrival_time<<"\t\t"<<p[i].burst_time<<"\t\t"<<p[i].turnaround_time<<"\t\t"<<p[i].waiting_time<<"\t\t"<<p[i].response_time<<"\t"<<"\n"<<endl;
+        cout<<p[i].process_ID<<"\t   "<<p[i].arrival_time<<"\t\t"<<p[i].burst_time<<"\t\t"<<p[i].turnaround_time<<"\t\t"<<p[i].waiting_time<<"\t\t"<<p[i].response_time<<"\t"<<"\n"<<endl;
     }
-    cout<<"Average Turnaround Time : "<<avg_turnaround_time<<endl;
-    cout<<"Average Waiting Time : "<<avg_waiting_time<<endl;
-    cout<<"Average Response Time : "<<avg_response_time<<endl;
-    cout<<"Throughput : "<<throughput<<endl;
+    cout<<"Average Turnaround Time = "<<avg_turnaround_time<<endl;
+    cout<<"Average Waiting Time =    "<<avg_waiting_time<<endl;
+    cout<<"Average Response Time =   "<<avg_response_time<<endl;
+    cout<<"Throughput =              "<<throughput<<endl;
 }
