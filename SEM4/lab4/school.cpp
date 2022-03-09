@@ -61,9 +61,10 @@ void display_greater(struct Node *s, float k)
 void insert_at_k (struct Node *s,int k){
     
     struct Node *p = s->next;
-    int i = 1;
+    int i = 0;
     while(p !=NULL){
-        if(i == k-1){ 
+        cout<<"k : "<<k<<"i : "<<i<<endl;
+        if(i == k){ 
             struct Node *n = new Node;
             n->next = p->next;
             p->next = n;
@@ -75,12 +76,13 @@ void insert_at_k (struct Node *s,int k){
             cin>>n->rollno;
             cout<<"Enter the semester : ";
             cin>>n->semester;
+            break;
         }
         i++;
         p = p->next;
 
     }
-    if()
+    if(k>=i) cout<<"index out of bound"<<endl;
 }
 int main()
 {
@@ -90,6 +92,13 @@ int main()
     struct Node *students = new Node;
     students->next = NULL;
     insert_data(students, length);
+    display(students);
+    cout<<"enter index : ";
+    int ind;
+    cin>>ind;
+    cout<<endl<<endl;
+    insert_at_k(students,ind);
+    cout<<endl<<endl;
     display(students);
 
     return 0;
