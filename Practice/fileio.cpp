@@ -12,7 +12,7 @@ int main(){
         vect.push_back(c);
     }
     file.close();
-    file.open("out",ios::out);
+    file.open("out.txt",ios::out);
     for(int i =0;i<vect.size();i++) file<<vect[i]<<'\n';
 
 }
