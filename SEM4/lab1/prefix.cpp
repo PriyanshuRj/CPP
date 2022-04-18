@@ -1,7 +1,5 @@
 #include<iostream>
-
 using namespace std;
-
 int *prefixsum(int *arr){
     int sum = 0;
     int *ar = new int[sizeof(arr)/sizeof(arr[0])];
