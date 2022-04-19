@@ -39,47 +39,54 @@ void traversal_preorder(struct Node *tree)
         cout << tree->data << " ";
     else
         return;
-    if(tree->left) traversal_preorder(tree->left);
-    if(tree->right) traversal_preorder(tree->right);
+    if (tree->left)
+        traversal_preorder(tree->left);
+    if (tree->right)
+        traversal_preorder(tree->right);
 }
 void traversal_postorder(struct Node *tree)
 {
     if (tree)
     {
-        if(tree->left) traversal_postorder(tree->left);
-        if(tree->right) traversal_postorder(tree->right);
+        if (tree->left)
+            traversal_postorder(tree->left);
+        if (tree->right)
+            traversal_postorder(tree->right);
         if (tree)
             cout << tree->data << " ";
         else
             return;
     }
-    else return;
+    else
+        return;
 }
 void traversal_inorder(struct Node *tree)
 {
     if (tree)
     {
-        if(tree->left) traversal_inorder(tree->left);
+        if (tree->left)
+            traversal_inorder(tree->left);
         if (tree)
             cout << tree->data << " ";
         else
             return;
-        if(tree->right) traversal_inorder(tree->right);
+        if (tree->right)
+            traversal_inorder(tree->right);
     }
     else
         return;
 }
 int main()
 {
-    cout<<"Enter the no of nodes in tree : ";
+    cout << "Enter the no of nodes in tree : ";
     int num = 0;
-    cin>>num;
+    cin >> num;
 
     int *arr = new int[num];
-    for (int i = 0; i < num; i++){
-        cout<<"Enter the data for tha Node "<<i<<" : ";
-        cin>>arr[i];
-
+    for (int i = 0; i < num; i++)
+    {
+        cout << "Enter the data for tha Node " << i << " : ";
+        cin >> arr[i];
     }
     struct Node *tree = new Node;
     tree = create_tree(tree, arr, 10);
