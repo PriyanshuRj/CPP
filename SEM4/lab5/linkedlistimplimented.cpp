@@ -10,17 +10,12 @@ struct Node
 void insert(struct Node *s, int ind, int data)
 {
     struct Node *p = s;
-    if (ind == 0)
-    {
-        struct Node *n = (struct Node *)malloc(sizeof(struct Node));
-        n->data = data;
-        n->next = s;
-        s = n;
-    }
-    else if (ind < 0)
+    
+    if (ind < 0)
         cout << "ERROR! wrong index use index greater than 0!" << endl;
     else
     {
+        ind++;
 
         int c_ind = 1, flag = 0;
         while (p)
@@ -48,17 +43,11 @@ void insert(struct Node *s, int ind, int data)
 void delete_node(struct Node *s, int ind)
 {
     struct Node *p = s;
-    if (ind == 0)
-    {
-        struct Node *n = s;
-        s = s->next;
-        free(n);
-    }
-    else if (ind < 0)
+    if (ind < 0)
         cout << "ERROR! wrong index use index greater than 0!" << endl;
     else
     {
-
+        ind++;
         int c_ind = 1, flag = 0;
         while (p)
         {
@@ -82,7 +71,7 @@ void delete_node(struct Node *s, int ind)
 }
 void display(struct Node *s)
 {
-    struct Node *p = s;
+    struct Node *p = s->next;
     while (p)
     {
         cout << "The data at the node is : " << p->data << endl;
@@ -95,7 +84,7 @@ int main()
     while (1)
     {
         cout << "1 for insertion\n2 for deletion\n3 for display" << endl;
-        cout << "Enter your choice !!";
+        cout << "Enter your choice : ";
         int ch, num, ind;
         cin >> ch;
         switch (ch)
