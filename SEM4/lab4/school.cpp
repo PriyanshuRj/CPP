@@ -25,6 +25,7 @@ void insert_data(struct Node *s, int n)
         n->next = NULL;
         p->next = n;
         p = p->next;
+        cout<<endl;
     }
 }
 void display(struct Node *s)
@@ -39,12 +40,14 @@ void display(struct Node *s)
         cout << "Semester of student " << i << " : " << p->semester << endl;
         i++;
         p = p->next;
+        cout<<endl;
     }
 }
 void display_greater(struct Node *s, float k)
 {
     struct Node *p = s;
     int i = 1;
+    cout<<"The students with CGPI grater than "<<k<<" are : "<<endl;
     while (p->next != NULL)
     {
         if (p->cgpi > k)
@@ -56,14 +59,14 @@ void display_greater(struct Node *s, float k)
         }
         i++;
         p = p->next;
+        cout<<endl;
     }
 }
 void insert_at_k (struct Node *s,int k){
     
-    struct Node *p = s->next;
+    struct Node *p = s;
     int i = 0;
-    while(p !=NULL){
-        cout<<"k : "<<k<<"i : "<<i<<endl;
+    while(p->next != NULL){
         if(i == k){ 
             struct Node *n = new Node;
             n->next = p->next;
@@ -92,8 +95,11 @@ int main()
     struct Node *students = new Node;
     students->next = NULL;
     insert_data(students, length);
-    display(students);
-    cout<<"enter index : ";
+    float cgp;
+    cout<<"Enter the minimum mark CGPI : ";
+    cin>>cgp;
+    display_greater(students,cgp);
+    cout<<"enter index for new insertion : ";
     int ind;
     cin>>ind;
     cout<<endl<<endl;

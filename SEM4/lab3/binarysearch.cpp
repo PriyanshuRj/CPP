@@ -30,10 +30,13 @@ int main(){
     int n,value;
     cout<<"Enter the number of element in the array :";
     cin>>n;
-    int arr[n];
+    int *arr = new int[n];
     cout<<"Enter the elements in sorted manner >>>>>>"<<endl;
-    for(int i =0;i<n;i++) cin>>arr[i];
-    cout<<"Enter the element to sort : ";
+    for(int i =0;i<n;i++) {
+        cout<<"Enter the element at index "<<i<<" : ";
+        cin>>arr[i];
+        }
+    cout<<"Enter the element to search : ";
     cin>>value;
     int result = binarySearch(arr,n,value);
     if(result==-1) cout<<"Element not found in thwe array !!";

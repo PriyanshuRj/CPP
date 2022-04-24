@@ -81,9 +81,10 @@ void display(struct Node *s)
 int main()
 {
     struct Node *nodes = new Node;
-    while (1)
+    int runstate =1;
+    while (runstate)
     {
-        cout << "1 for insertion\n2 for deletion\n3 for display" << endl;
+        cout << "1 for insertion\n2 for deletion\n3 for display\nelse for exiting\n\n";
         cout << "Enter your choice : ";
         int ch, num, ind;
         cin >> ch;
@@ -95,17 +96,21 @@ int main()
             cout << "Enter the data to be inserted : ";
             cin >> num;
             insert(nodes, ind, num);
+            cout<<endl;
             break;
         case 2:
             cout << "Enter the index of deletion : ";
             cin >> ind;
 
             delete_node(nodes, ind);
+            cout<<endl;
             break;
         case 3:
             display(nodes);
+            cout<<endl;
             break;
         default:
+            runstate = 0;
             break;
         }
     }
