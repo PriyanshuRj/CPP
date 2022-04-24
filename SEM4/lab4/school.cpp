@@ -87,7 +87,7 @@ void insert_at_k (struct Node *s,int k){
 int main()
 {
     int length;
-    cout << "Enter the no. of students in the class :" << endl;
+    cout << "Enter the no. of students in the class :";
     cin >> length;
     struct Node *students = new Node;
     students->next = NULL;
