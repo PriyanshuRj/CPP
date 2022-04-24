@@ -73,8 +73,8 @@ int main(){
     int cond = 1;
     while(cond){
         int selector;
-        cout<<"1 for insertion\n2 for deletion\n3 for display\nelse for exit";
-        cout<<"Select one operation :::::::::::::"<<endl;
+        cout<<"1 for insertion\n2 for deletion\n3 for display\nelse for exit\n\n";
+        cout<<"Select one operation :";
         cin>>selector;
         int e;
         switch(selector){
