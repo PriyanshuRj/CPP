@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-void bubbleSort(int v[], int n)
+void bubbleSortAlgo(int v[], int n)
 {
     int i, j;
     for (i = 0; i < n - 1; i++)
@@ -32,7 +31,7 @@ int main()
         cout << "Enter the element at index " << i << " : ";
         cin >> v[i];
     }
-    bubbleSort(v, n);
+    bubbleSortAlgo(v, n);
     cout << "List after Sorting :" << '\n';
     for (int i = 0; i < n; i++)
         cout << v[i] << " ";
