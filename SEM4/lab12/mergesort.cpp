@@ -1,49 +1,44 @@
 #include <iostream>
 using namespace std;
-void swapping(int &a, int &b)
-{
+void swapping(int &a, int &b) {
     int temp;
     temp = a;
     a = b;
     b = temp;
 }
-void display(int *array, int size)
-{
+void display(int *array, int size) {
     for (int i = 0; i < size; i++)
         cout << array[i] << " ";
     cout << endl;
 }
-void merge(int *array, int l, int m, int r)
-{
-    int i, j, k, nl, nr;
-    nl = m - l + 1;
-    nr = r - m;
-    int left_array[nl], rarr[nr];
-    for (i = 0; i < nl; i++)
-        left_array[i] = array[l + i];
-    for (j = 0; j < nr; j++)
-        rarr[j] = array[m + 1 + j];
+void merge(int *array, int l, int m, int r) {
+    int i, j, k, left_length, right_length;
+    left_length = m - l + 1;
+    right_length = r - m;
+    int *left_array = new int[left_length], *right_array = new int[right_length];
+    for (i = 0; i < left_length; i++)  left_array[i] = array[l + i];
+    for (j = 0; j < right_length; j++)  right_array[j] = array[m + 1 + j];
     i = 0;
     j = 0;
     k = l;
-    while (i < nl && j < nr) {
-        if (left_array[i] <= rarr[j]) {
+    while (i < left_length && j < right_length) {
+        if (left_array[i] <= right_array[j]) {
             array[k] = left_array[i];
             i++;
         }
         else {
-            array[k] = rarr[j];
+            array[k] = right_array[j];
             j++;
         }
         k++;
     }
-    while (i < nl) {
+    while (i < left_length) {
         array[k] = left_array[i];
         i++;
         k++;
     }
-    while (j < nr) {
-        array[k] = rarr[j];
+    while (j < right_length) {
+        array[k] = right_array[j];
         j++;
         k++;
     }
