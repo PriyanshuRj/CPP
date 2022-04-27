@@ -1,16 +1,5 @@
 #include <iostream>
 using namespace std;
-void swapping(int &a, int &b) {
-    int temp;
-    temp = a;
-    a = b;
-    b = temp;
-}
-void display(int *array, int size) {
-    for (int i = 0; i < size; i++)
-        cout << array[i] << " ";
-    cout << endl;
-}
 void merge(int *array, int l, int m, int r) {
     int i, j, k, left_length, right_length;
     left_length = m - l + 1;
@@ -52,9 +41,14 @@ void mergeSort(int *array, int l, int r) {
         merge(array, l, m, r);
     }
 }
+void display(int *array, int size) {
+    for (int i = 0; i < size; i++)
+        cout << array[i] << " ";
+    cout << endl;
+}
 int main() {
     int n;
-    cout << "Enter the number of elements int the Array : ";
+    cout << "Enter the number of elements the Array : ";
     cin >> n;
     int *arr = new int[n];
     cout << "Enter the elements::::::" << endl;

@@ -1,49 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
 void addEdge(vector<int> adj[], int src, int dest)  { adj[src].push_back(dest);}
-void displayGraph(vector<int> adj[], int v) {
-    for (int i = 0; i < v; i++)    {
-        cout << i;
-        for (int j = 0; j < adj[i].size(); j++) cout << " --> " << adj[i][j];
-        cout << "\n";
-    }
-}
+
 void transposeGraph(vector<int> adj[], vector<int> transpose[], int v) {
     for (int i = 0; i < v; i++)    for (int j = 0; j < adj[i].size(); j++)    addEdge(transpose, adj[i][j], i);
 }
-int main() {
-    int v = 5;
-    vector<int> adj[v];
-    vector<int> transpose[v];
-    int cond = 1;
-      while(cond){
-    cout<<"\nPress 1 for adding Edge\nPress 2 for transposing Graph\nPress 3 for checking top\nElse for exiting\n\nEnter your choice : ";
-    int choice;
-    cin>>choice;
-    switch(choice){
-      case 1:
-        cout<<"Enter first vertix : ";
-        int data1,data2;
-        cin>>data1;
-        cout<<"Enter second vertix : ";
-        cin>>data2;
-        addEdge(adj,data1,data2);
-        break;
-      default:
-        cond = 0;
-        break; 
-    }
-  }
-    addEdge(adj, 0, 1);
-    addEdge(adj, 0, 3);
-    addEdge(adj, 1, 2);
-    addEdge(adj, 1, 3);
-    addEdge(adj, 2, 0);
-    addEdge(adj, 3, 2);
-    addEdge(adj, 4, 1);
-    addEdge(adj, 4, 3);
+void display(vector<int> adj[], int v) {
+    for (int i = 0; i < v; i++)  for (int j = 0; j < adj[i].size(); j++) cout <<i<< " --> " << adj[i][j]<<endl;
     
-    transposeGraph(adj, transpose, v);
-    displayGraph(transpose, v);
+}
+int main() {
+    cout<<"Enter the no. of Connections : ";
+    int n_connection = 0;
+    cin>>n_connection;
+        vector<int> adj[n_connection];
+    vector<int> transpose[n_connection];
+    for(int i = 0;i<n_connection;i++){
+        cout<<"For Connection "<<i+1<<" :::: \n";
+        cout<<"Enter the starting Node : ";
+        int start,end;
+        cin>>start;
+        cout<<"Enter the ending Node : ";
+        cin>>end;
+        addEdge(adj,start,end);
+    }
+    cout<<"Actual Graph : "<<endl;
+    display(adj, n_connection);
+    cout<<endl<<endl;
+    transposeGraph(adj, transpose, n_connection);
+    cout<<"After Transposing the Graph : "<<endl;
+    display(transpose, n_connection);
     return 0;
 }
