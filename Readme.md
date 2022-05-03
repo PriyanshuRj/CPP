@@ -1,3 +1,3 @@
 # CPP Reposetory
 
-This repo contain major code related to CPP and some intresting questions related to CPP and DSA.
+This repo contains soloution for NITH CS 202 LAB file Assignment.
